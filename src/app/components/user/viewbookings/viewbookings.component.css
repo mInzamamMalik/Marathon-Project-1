@@ -1,0 +1,20 @@
+.booking{
+    background-color: lightgray;
+    border: 2px solid black;
+    margin: 4px;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printArea, #printArea * {
+    visibility: visible;
+  } 
+  #printArea {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+}
