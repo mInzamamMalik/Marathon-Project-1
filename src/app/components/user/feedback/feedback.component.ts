@@ -21,7 +21,6 @@ export class FeedbackComponent implements OnInit {
                         equalTo: this.feedback.sender
                     }
                 })
-                this.feedbacks.subscribe(console.log)
             })
     }
     feedbacks;
