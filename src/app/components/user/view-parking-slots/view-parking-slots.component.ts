@@ -20,10 +20,16 @@ export class ViewParkingSlotsComponent implements OnInit {
             .subscribe((data: any) => {
                 console.log("Router params: ", data)
                 this.parking = this.fs.getData("parkings/" + data.uid)
+                
+                localStorage.setItem("parkingUid", data.uid)
+                
                 console.log(this.parking);
                 this.slots = this.fs.getList("parkings/" + data.uid + "/slots")
             });
     }
+
+
+    // this.router.navigate(['/login']);
     parking;
     slots;
 

@@ -8,16 +8,16 @@ declare let emailjs: any;
 export class AppComponent {
     title = 'Parking System!';
     ngOnInit() {
-        emailjs.send("gmail", "abc", {
-            name: "James",
-            notes: "Check this out!",
-            email: "a@a.com",
-            content: "this is text of email"
+        // emailjs.send("gmail", "abc", {
+        //     name: "James",
+        //     notes: "Check this out!",
+        //     email: "a@a.com",
+        //     content: "this is text of email"
 
-        }).then(function (response) {
-            console.log("SUCCESS", response);
-        }, function (error) {
-            console.log("FAILED", error);
-        });
+        // }).then(function (response) {
+        //     console.log("SUCCESS", response);
+        // }, function (error) {
+        //     console.log("FAILED", error);
+        // });
     }
 }

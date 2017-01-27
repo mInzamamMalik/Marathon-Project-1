@@ -1,3 +1,14 @@
 <p>
-  bookslot works!
+    bookslot works!
 </p>
+<form action="" (submit)="bookSlot()">
+
+    <label for="">From:</label> <br/>
+    <input [value]="abc" [(ngModel)]="booking.from" name="from"  type="datetime-local" /> <br/>
+
+    <label for="">Till:</label> <br/>
+    <input [(ngModel)]="booking.till" name="till"  type="datetime-local" /> <br/>
+
+    <button type="submit">Book</button>
+    
+</form>
