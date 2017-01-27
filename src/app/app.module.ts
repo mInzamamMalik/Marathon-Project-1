@@ -22,6 +22,7 @@ import { UserDashboardComponent } from './components/user/user-dashboard/user-da
 import { FeedbackComponent } from './components/user/feedback/feedback.component';
 import { ViewParkingSlotsComponent } from './components/user/view-parking-slots/view-parking-slots.component';
 import { BookslotComponent } from './components/user/bookslot/bookslot.component';
+import { ViewbookingsComponent } from './components/user/viewbookings/viewbookings.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyB-ThotQG3b2xag7xs07VGoK5s2wN9Vrqw",
@@ -43,6 +44,7 @@ const appRoutes: Routes = [
     { path: 'user/feedback', component: FeedbackComponent },
     { path: 'user/parking', component: ViewParkingSlotsComponent },
     { path: 'user/bookslot', component: BookslotComponent },
+    { path: 'user/viewbookings', component: ViewbookingsComponent },
 
     // {
     //     path: 'heroes',
@@ -68,7 +70,8 @@ const appRoutes: Routes = [
         ViewFeedbackComponent,
         FeedbackComponent,
         ViewParkingSlotsComponent,
-        BookslotComponent
+        BookslotComponent,
+        ViewbookingsComponent
     ],
     imports: [
         BrowserModule,

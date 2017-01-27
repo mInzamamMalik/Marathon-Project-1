@@ -2,6 +2,7 @@
     User dashboard:
 </p>
 <button [routerLink]="['/user/feedback']">Give Feedback</button>
+<button [routerLink]="['/user/viewbookings']">View Bookings</button>
 
 <div>
     <div *ngFor="let item of parkings | async" class="parking" [routerLink]="['/user/parking', {uid: item.$key}]" routerLinkActive="active">
