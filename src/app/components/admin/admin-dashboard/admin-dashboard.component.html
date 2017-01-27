@@ -1,3 +1,11 @@
 <p>
-  admin-dashboard works!
+    Admin dashboard
 </p>
+
+<form action="" (submit)="addParkingArea()">
+    <input (input)="parking.name=$event.target.value" placeholder="Parking Name" required />
+    <br/> Slots:
+    <input (input)="parking.slotCount=$event.target.value" placeholder="Slots" type="number" min="5" max="50" required />
+    <br>
+    <button type="submit">Add</button>
+</form>
