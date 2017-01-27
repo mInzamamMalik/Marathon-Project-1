@@ -32,6 +32,9 @@ export class FireService {
     getData(path) {
         return this.af.database.object('/' + path);
     }
+    getList(path) {
+        return this.af.database.list('/' + path);
+    }
     pushData(path, data): firebase.Promise<void> {
         return this.af.database.list('/' + path).push(data);
     }

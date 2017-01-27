@@ -2,6 +2,13 @@
     Admin dashboard
 </p>
 
+<div>
+    <div *ngFor="let item of parkings | async" class="parking">
+        <p><b>Parking Name:</b> {{item.name}}</p>
+        <p><b>Slots:</b> {{item.slotCount}}</p>
+    </div>
+</div>
+
 <form action="" (submit)="addParkingArea()">
     <input (input)="parking.name=$event.target.value" placeholder="Parking Name" required />
     <br/> Slots:

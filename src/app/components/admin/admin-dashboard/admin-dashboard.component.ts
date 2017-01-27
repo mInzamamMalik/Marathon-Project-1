@@ -9,9 +9,10 @@ import { FireService } from '../../../providers/fire.service';
 export class AdminDashboardComponent implements OnInit {
 
     constructor(private fs: FireService) { }
-
     ngOnInit() {
+        this.parkings = this.fs.getList('parkings');
     }
+    parkings;
     parking = {
         name: "",
         slots: [],
@@ -19,12 +20,9 @@ export class AdminDashboardComponent implements OnInit {
     }
 
     addParkingArea() {
-
         for (let i = 0; i < this.parking.slotCount; i++) {
             this.parking.slots[i] = true;
         }
-
-
         this.fs.pushData("parkings", this.parking)
             .catch(error => {
                 console.log("Error is: ", error);
@@ -32,7 +30,6 @@ export class AdminDashboardComponent implements OnInit {
             .then(data => {
                 //this.router.navigate(['/login']);
             });
-
-    }
+    }    
 
 }
