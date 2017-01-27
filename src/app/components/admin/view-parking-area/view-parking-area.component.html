@@ -1,3 +1,13 @@
 <p>
-  view-parking-area works!
+    {{ (parking | async)?.name }}
 </p>
+
+Slots:
+<div>
+    <div *ngFor="let item of slots | async; let index = index " class="slots">
+        <b>{{ index+1 }}:</b>
+        
+        <p [hidden]="!item.$value">available</p>
+        <p [hidden]="item.$value" class="booked">Booked</p>
+    </div>
+</div>
