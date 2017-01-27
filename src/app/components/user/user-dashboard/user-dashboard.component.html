@@ -4,7 +4,7 @@
 <button [routerLink]="['/user/feedback']">Give Feedback</button>
 
 <div>
-    <div *ngFor="let item of parkings | async" class="parking" [routerLink]="['/admin/parking', {uid: item.$key}]" routerLinkActive="active">
+    <div *ngFor="let item of parkings | async" class="parking" [routerLink]="['/user/parking', {uid: item.$key}]" routerLinkActive="active">
         <p><b>Parking Name:</b> {{item.name}}</p>
         <p><b>Slots:</b> {{item.slotCount}}</p>
     </div>
