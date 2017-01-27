@@ -16,6 +16,7 @@ import { SignupComponent } from './components/signup/signup.component';
 
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
 import { UserDashboardComponent } from './components/user/user-dashboard/user-dashboard.component';
+import { ViewParkingAreaComponent } from './components/admin/view-parking-area/view-parking-area.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyB-ThotQG3b2xag7xs07VGoK5s2wN9Vrqw",
@@ -28,7 +29,10 @@ export const firebaseConfig = {
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
+    
     { path: 'admin/dashboard', component: AdminDashboardComponent },
+    { path: 'admin/parking', component: ViewParkingAreaComponent },
+
     { path: 'user/dashboard', component: UserDashboardComponent },
 
     // {
@@ -50,7 +54,8 @@ const appRoutes: Routes = [
         LoginComponent,
         SignupComponent,
         AdminDashboardComponent,
-        UserDashboardComponent
+        UserDashboardComponent,
+        ViewParkingAreaComponent
     ],
     imports: [
         BrowserModule,
