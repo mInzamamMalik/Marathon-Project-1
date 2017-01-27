@@ -17,12 +17,13 @@ export class ViewParkingAreaComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.ActivatedRoute.params.subscribe((data: any) => {
-            console.log("Router params: ", data)
-            this.parking = this.fs.getData("parkings/" + data.uid)
-            console.log(this.parking);
-            this.slots = this.fs.getList("parkings/" + data.uid + "/slots")
-        });
+        this.ActivatedRoute.params
+            .subscribe((data: any) => {
+                console.log("Router params: ", data)
+                this.parking = this.fs.getData("parkings/" + data.uid)
+                console.log(this.parking);
+                this.slots = this.fs.getList("parkings/" + data.uid + "/slots")
+            });
     }
     parking;
     slots;

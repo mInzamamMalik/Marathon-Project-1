@@ -1,3 +1,20 @@
 <p>
-  give feedback works!
+    give feedback works!
 </p>
+
+<form action="" (submit)="sendFeedback()">
+    <input (input)="feedback.subject=$event.target.value" placeholder="Subject" required />
+    <br>
+    <textarea (input)="feedback.message=$event.target.value" placeholder="Your message here" cols="30" rows="10"></textarea>
+    <br>
+    <button type="submit">Send Feedback</button>
+</form>
+
+<div>
+    <div *ngFor="let item of feedbacks | async" class="feedback">
+        <p><b>Subject:</b> {{item.subject}}</p>
+        <p><b>Message:</b> {{item.message}}</p>
+        <p [hidden]="!item.reply" class="reply"><b>Admin Reply:</b> {{item.reply}}</p>
+
+    </div>
+</div>
