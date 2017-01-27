@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { NgReduxModule } from 'ng2-redux';
 import { StoreModule } from './store'
+import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireModule } from 'angularfire2';
 import { FireService } from './providers/fire.service'
@@ -21,6 +22,23 @@ export const firebaseConfig = {
     messagingSenderId: "1001157393966"
 };
 
+const appRoutes: Routes = [
+    { path: 'login', component: LoginComponent },
+    { path: 'signup', component: SignupComponent },
+
+    // {
+    //     path: 'heroes',
+    //     component: HeroListComponent,
+    //     data: { title: 'Heroes List' }
+    // },
+    // {
+    //     path: '',
+    //     redirectTo: '/heroes',
+    //     pathMatch: 'full'
+    // },
+    { path: '**', component: LoginComponent }
+];
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -33,7 +51,8 @@ export const firebaseConfig = {
         HttpModule,
         NgReduxModule,
         StoreModule,
-        AngularFireModule.initializeApp(firebaseConfig)
+        AngularFireModule.initializeApp(firebaseConfig),
+        RouterModule.forRoot(appRoutes)
 
     ],
     providers: [FireService],
