@@ -15,8 +15,11 @@ import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 
 import { AdminDashboardComponent } from './components/admin/admin-dashboard/admin-dashboard.component';
-import { UserDashboardComponent } from './components/user/user-dashboard/user-dashboard.component';
 import { ViewParkingAreaComponent } from './components/admin/view-parking-area/view-parking-area.component';
+import { ViewFeedbackComponent } from './components/admin/view-feedback/view-feedback.component';
+
+import { UserDashboardComponent } from './components/user/user-dashboard/user-dashboard.component';
+import { FeedbackComponent } from './components/user/feedback/feedback.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyB-ThotQG3b2xag7xs07VGoK5s2wN9Vrqw",
@@ -32,8 +35,10 @@ const appRoutes: Routes = [
     
     { path: 'admin/dashboard', component: AdminDashboardComponent },
     { path: 'admin/parking', component: ViewParkingAreaComponent },
+    { path: 'admin/feedback', component: ViewFeedbackComponent },
 
     { path: 'user/dashboard', component: UserDashboardComponent },
+    { path: 'user/feedback', component: FeedbackComponent },
 
     // {
     //     path: 'heroes',
@@ -55,7 +60,9 @@ const appRoutes: Routes = [
         SignupComponent,
         AdminDashboardComponent,
         UserDashboardComponent,
-        ViewParkingAreaComponent
+        ViewParkingAreaComponent,
+        ViewFeedbackComponent,
+        FeedbackComponent
     ],
     imports: [
         BrowserModule,
