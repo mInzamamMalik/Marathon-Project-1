@@ -23,6 +23,7 @@ import { FeedbackComponent } from './components/user/feedback/feedback.component
 import { ViewParkingSlotsComponent } from './components/user/view-parking-slots/view-parking-slots.component';
 import { BookslotComponent } from './components/user/bookslot/bookslot.component';
 import { ViewbookingsComponent } from './components/user/viewbookings/viewbookings.component';
+import { ViewAllBookingsComponent } from './components/admin/view-all-bookings/view-all-bookings.component';
 
 export const firebaseConfig = {
     apiKey: "AIzaSyB-ThotQG3b2xag7xs07VGoK5s2wN9Vrqw",
@@ -35,10 +36,11 @@ export const firebaseConfig = {
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
-    
+
     { path: 'admin/dashboard', component: AdminDashboardComponent },
     { path: 'admin/parking', component: ViewParkingAreaComponent },
     { path: 'admin/feedback', component: ViewFeedbackComponent },
+    { path: 'admin/bookings', component: ViewAllBookingsComponent },
 
     { path: 'user/dashboard', component: UserDashboardComponent },
     { path: 'user/feedback', component: FeedbackComponent },
@@ -71,7 +73,8 @@ const appRoutes: Routes = [
         FeedbackComponent,
         ViewParkingSlotsComponent,
         BookslotComponent,
-        ViewbookingsComponent
+        ViewbookingsComponent,
+        ViewAllBookingsComponent
     ],
     imports: [
         BrowserModule,
