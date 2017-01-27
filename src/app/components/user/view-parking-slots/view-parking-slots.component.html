@@ -4,10 +4,11 @@
 
 Slots:
 <div>
-    <div *ngFor="let item of slots | async; let index = index " class="slots" [routerLink]="['/user/bookslot', {slot: item.$key}]" routerLinkActive="active">
+    <div *ngFor="let item of slots | async; let index = index " class="slots" [routerLink]="['/user/bookslot', {slot: item.$key}]"
+        routerLinkActive="active">
         <b>{{ index+1 }}:</b>
-        
-        <p [hidden]="!item.$value">available</p>
-        <p [hidden]="item.$value" class="booked">Booked</p>
-    </div>
+        <p [ngClass]='{"booked": item.$value}'>
+            {{item.$value ? "Booked" : "Available"}}
+        </p>
+</div>
 </div>

@@ -21,7 +21,7 @@ export class AdminDashboardComponent implements OnInit {
 
     addParkingArea() {
         for (let i = 0; i < this.parking.slotCount; i++) {
-            this.parking.slots[i] = true;
+            this.parking.slots[i] = false;
         }
         this.fs.pushData("parkings", this.parking)
             .catch(error => {

@@ -20,17 +20,39 @@ export class ViewParkingSlotsComponent implements OnInit {
             .subscribe((data: any) => {
                 console.log("Router params: ", data)
                 this.parking = this.fs.getData("parkings/" + data.uid)
-                
+
                 localStorage.setItem("parkingUid", data.uid)
-                
+
                 console.log(this.parking);
                 this.slots = this.fs.getList("parkings/" + data.uid + "/slots")
+                this.slots
+                .take(1)
+                    .subscribe(slots => {
+                        console.log("slots: ", slots);
+                        this.fs.getList('bookings', {
+                            query: {
+                                orderByChild: 'parkingUid',
+                                equalTo: data.uid //only get booking of following parking area
+                            }
+                        })
+                            .take(1)
+                            .subscribe(bookingData => {
+                                console.log("found bookings for this parking area: ", bookingData);
+                                for (let i = 0; i < bookingData.length; i++) {
+
+                                    console.log("booking: ", bookingData[i]);
+                                    if (Date().slice(0, 15) == new Date(bookingData[i].till).toString().slice(0, 15)) {
+                                        console.log("booking till today, mark it as booked");
+                                        this.fs.setData('parkings/' + bookingData[i].parkingUid + "/slots/" + bookingData[i].slot, bookingData[i].till)
+
+                                    } else {
+                                        this.fs.setData('parkings/' + bookingData[i].parkingUid + "/slots/" + bookingData[i].slot, false)
+                                    }
+                                }
+                            });
+                    })
             });
     }
-
-
-    // this.router.navigate(['/login']);
     parking;
     slots;
-
 }
