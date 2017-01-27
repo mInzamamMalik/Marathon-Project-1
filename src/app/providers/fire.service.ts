@@ -23,6 +23,12 @@ export class FireService {
             })
     }
     doSignup(email, password) {
-        return this.af.auth.createUser({ email: email, password: password })            
+        return this.af.auth.createUser({ email: email, password: password })
+    }
+    setData(path, data): firebase.Promise<void> {
+        return this.af.database.object('/' + path).set(data);
+    }
+    getData(path) {
+        return this.af.database.object('/' + path);
     }
 }
