@@ -25,6 +25,7 @@ export class BookslotComponent implements OnInit {
             .subscribe(auth => {
                 console.log("this is auth: ", auth);
                 this.booking.userUid = auth.uid;
+                this.booking.userEmail = auth.auth.email;
             });
 
         this.fs.getData("parkings/" + localStorage.getItem("parkingUid"))
@@ -40,10 +41,13 @@ export class BookslotComponent implements OnInit {
         parkingUid: "",
         parkingAreaName: "",
         slot: "",
-        userUid: ""
+        userUid: "",
+        userEmail: "",
+        createdAt: this.fs.getDate(),
     }
 
     bookSlot() {
+        console.log("initial object: ", this.booking);
         let currentDate = Date.now();
 
         this.booking.parkingUid = localStorage.getItem("parkingUid");
@@ -85,7 +89,7 @@ export class BookslotComponent implements OnInit {
                 console.log("iteration ended, no booking found in matching time slot");
                 this.fs.pushData("bookings", this.booking)
                     .then(done => {
-                        console.log("Booking Success");
+                        alert("Booking Success");
                     });
             });
         }//else ended here

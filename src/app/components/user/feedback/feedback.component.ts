@@ -27,7 +27,8 @@ export class FeedbackComponent implements OnInit {
     feedback = {
         subject: "",
         message: "",
-        sender: ""
+        sender: "",
+        createdAt: this.fs.getDate(),
     }
 
     sendFeedback() {

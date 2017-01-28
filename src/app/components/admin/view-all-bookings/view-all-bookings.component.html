@@ -3,13 +3,15 @@
 </p>
 
 <div id="printArea">
-    <div *ngFor="let item of bookingsList | async" class="booking">
+    <div *ngFor="let item of bookingsList | async | reverse" class="booking">
+        <p><b>Created At:</b> {{item.createdAt | date:'yMMMdjms'}}</p>
         <p><b>Booking Id:</b> {{item.$key}}</p>
         <p><b>Parking Name:</b> {{item.parkingAreaName}}</p>
         <p><b>Slot:</b> {{item.slot}}</p>
         <p><b>Duration:</b> {{ (item.till - item.from)/(1000*60*60) }} Hr</p>
         <p><b>From:</b> {{item.from | date:'yMMMdjms'}}</p>
         <p><b>Till:</b> {{item.till | date:'yMMMdjms'}}</p>
+        <p><b>User email:</b> {{item.userEmail}}</p>
         <button (click)="cancelReservation(item)" class="button">Cancel Reservation</button>
     </div>
 </div>

@@ -3,6 +3,7 @@
 </p>
 
 Slots:
+<p class="note">yellow marked slots are booked for today(such as booked for 3pm-5pm today) but you can still try to book that slots, if it will be Available for your time frame you can book it, such as book it for 6pm-7pm </p>
 <div>
     <div *ngFor="let item of slots | async; let index = index " class="slots" [routerLink]="['/user/bookslot', {slot: item.$key}]"
         routerLinkActive="active">

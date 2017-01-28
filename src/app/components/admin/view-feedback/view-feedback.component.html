@@ -2,7 +2,8 @@
     View and Reply feedback:
 </p>
 <div>
-    <div *ngFor="let item of feedbacks | async" class="feedback">
+    <div *ngFor="let item of feedbacks | async | reverse" class="feedback">
+        <p><b>At:</b> {{item.createdAt | date:'yMMMdjms'}}</p>
         <p><b>Subject:</b> {{item.subject}}</p>
         <p><b>Message:</b> {{item.message}}</p>
         <p [hidden]="!item.reply" class="reply"><b>Admin Reply:</b> {{item.reply}}</p>

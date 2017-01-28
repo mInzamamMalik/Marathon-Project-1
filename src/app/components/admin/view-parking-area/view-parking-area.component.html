@@ -15,7 +15,8 @@ Slots:
 
 Bookings on this parking area:
 <div id="printArea">
-    <div *ngFor="let item of bookingsList | async" class="booking">
+    <div *ngFor="let item of bookingsList | async | reverse" class="booking">
+        <p><b>Created At:</b> {{item.createdAt | date:'yMMMdjms'}}</p>
         <p><b>Booking Id:</b> {{item.$key}}</p>
         <p><b>Parking Name:</b> {{item.parkingAreaName}}</p>
         <p><b>Slot:</b> {{item.slot}}</p>

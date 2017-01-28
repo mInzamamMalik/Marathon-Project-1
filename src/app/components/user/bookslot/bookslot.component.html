@@ -4,10 +4,10 @@
 <form action="" (submit)="bookSlot()">
 
     <label for="">From:</label> <br/>
-    <input [value]="abc" [(ngModel)]="booking.from" name="from"  type="datetime-local" /> <br/>
+    <input [value]="abc" [(ngModel)]="booking.from" name="from"  type="datetime-local" required /> <br/>
 
     <label for="">Till:</label> <br/>
-    <input [(ngModel)]="booking.till" name="till"  type="datetime-local" /> <br/>
+    <input [(ngModel)]="booking.till" name="till"  type="datetime-local" required /> <br/>
 
     <button type="submit">Book</button>
     
