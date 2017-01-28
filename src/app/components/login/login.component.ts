@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
         console.log(this.data);
         this.fs.doLogin(this.data.email, this.data.password)
             .catch((error: any) => {
-                alert(error);
+                alert(error.code);
                 console.log(error);
             })
             .then((user) => {

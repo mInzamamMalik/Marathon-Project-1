@@ -21,6 +21,7 @@ export class FireService {
                 method: AuthMethods.Password,
             }).catch((error: any) => {
                 console.log(error);
+                alert(error.code);
             })
     }
     doSignup(email, password) {
