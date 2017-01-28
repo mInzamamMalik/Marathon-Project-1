@@ -10,6 +10,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { FireService } from './providers/fire.service'
 
+import { ReversePipe } from './pipes/reverse';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
@@ -74,7 +76,8 @@ const appRoutes: Routes = [
         ViewParkingSlotsComponent,
         BookslotComponent,
         ViewbookingsComponent,
-        ViewAllBookingsComponent
+        ViewAllBookingsComponent,
+        ReversePipe
     ],
     imports: [
         BrowserModule,
