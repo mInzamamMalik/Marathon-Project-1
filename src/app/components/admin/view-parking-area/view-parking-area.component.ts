@@ -22,9 +22,18 @@ export class ViewParkingAreaComponent implements OnInit {
                 console.log("Router params: ", data)
                 this.parking = this.fs.getData("parkings/" + data.uid)
                 console.log(this.parking);
+                this.bookingsList = this.fs.getList('bookings', {
+                            query: {
+                                orderByChild: 'parkingUid',
+                                equalTo: data.uid //only get booking of following parking area
+                            }
+                        });
                 this.slots = this.fs.getList("parkings/" + data.uid + "/slots")
             });
+
+            
     }
     parking;
     slots;
+    bookingsList;
 }
