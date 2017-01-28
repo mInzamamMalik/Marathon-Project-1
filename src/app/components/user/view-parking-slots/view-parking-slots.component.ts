@@ -25,7 +25,7 @@ export class ViewParkingSlotsComponent implements OnInit {
 
                 console.log(this.parking);
                 this.slots = this.fs.getList("parkings/" + data.uid + "/slots")
-                this.slots
+                this.fs.getList("parkings/" + data.uid + "/slots")
                 .take(1)
                     .subscribe(slots => {
                         console.log("slots: ", slots);
