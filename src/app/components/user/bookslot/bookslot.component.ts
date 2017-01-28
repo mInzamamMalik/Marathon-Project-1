@@ -16,6 +16,13 @@ export class BookslotComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+
+    console.log("firebase date: ",this.fs.getDate());
+    console.log("local date: ",new Date().toISOString());
+    
+    console.log("local date in mili: ",new Date("2017-01-28T06:03:04.038Z") );
+
+
         this.ActivatedRoute.params
             .subscribe((data: any) => {
                 console.log("Router params: ", data)
@@ -47,12 +54,15 @@ export class BookslotComponent implements OnInit {
     }
 
     bookSlot() {
-        console.log("initial object: ", this.booking);
+        console.log("initial object: ", this.booking.toString());
         let currentDate = Date.now();
-
+        
+        console.log("from: "+this.booking.from)                
+        console.log("till: "+this.booking.till)
+        
         this.booking.parkingUid = localStorage.getItem("parkingUid");
-        this.booking.from = new Date(this.booking.from).getTime();
-        this.booking.till = new Date(this.booking.till).getTime();
+        this.booking.from = new Date(this.booking.from.replace("T",":")).getTime();
+        this.booking.till = new Date(this.booking.till.replace("T",":")).getTime();
 
         console.log("final object: ", this.booking);
 
