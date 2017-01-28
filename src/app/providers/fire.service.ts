@@ -44,4 +44,8 @@ export class FireService {
     getUser() {
         return this.af.auth;
     }
+    logout() {
+        this.af.auth.logout();
+        this.router.navigate(['/login']);
+    }
 }

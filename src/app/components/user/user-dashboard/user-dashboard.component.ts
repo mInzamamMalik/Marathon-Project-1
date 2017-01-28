@@ -15,4 +15,8 @@ export class UserDashboardComponent implements OnInit {
     }
     parkings;
 
+    logout()  {
+        this.fs.logout();
+    }
+
 }

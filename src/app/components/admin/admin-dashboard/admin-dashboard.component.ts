@@ -30,6 +30,9 @@ export class AdminDashboardComponent implements OnInit {
             .then(data => {
                 //this.router.navigate(['/login']);
             });
-    }    
+    } 
+    logout()  {
+        this.fs.logout();
+    }
 
 }
