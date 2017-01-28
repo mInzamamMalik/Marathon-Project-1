@@ -17,10 +17,10 @@ export class BookslotComponent implements OnInit {
 
     ngOnInit() {
 
-    console.log("firebase date: ",this.fs.getDate());
-    console.log("local date: ",new Date().toISOString());
-    
-    console.log("local date in mili: ",new Date("2017-01-28T06:03:04.038Z") );
+        console.log("firebase date: ", this.fs.getDate());
+        console.log("local date: ", new Date().toISOString());
+
+        console.log("local date in mili: ", new Date("2017-01-28T06:03:04.038Z"));
 
 
         this.ActivatedRoute.params
@@ -56,13 +56,13 @@ export class BookslotComponent implements OnInit {
     bookSlot() {
         console.log("initial object: ", this.booking.toString());
         let currentDate = Date.now();
-        
-        console.log("from: "+this.booking.from)                
-        console.log("till: "+this.booking.till)
-        
+
         this.booking.parkingUid = localStorage.getItem("parkingUid");
-        this.booking.from = new Date(this.booking.from.replace("T",":")).getTime();
-        this.booking.till = new Date(this.booking.till.replace("T",":")).getTime();
+        let from = new Date(this.booking.from.replace("T", ":")).getTime();
+        let till = new Date(this.booking.till.replace("T", ":")).getTime();
+
+        this.booking.from = from
+        this.booking.till = till;
 
         console.log("final object: ", this.booking);
 
@@ -78,30 +78,34 @@ export class BookslotComponent implements OnInit {
                     equalTo: this.booking.parkingUid
                 }
             })
-            .take(1)
-            .subscribe(bookingData => {
-                console.log("found bookings for this parking area: ", bookingData);
-                for (let i = 0; i < bookingData.length; i++) {
-                    if (bookingData[i].slot == this.booking.slot) {
-                        //same slot, check if time is in between
-                        console.log(i + ".same slot, check if time is in between");
-                        if (
-                            (this.booking.from >= bookingData[i].from &&
-                                this.booking.from <= bookingData[i].till)
-                            ||
-                            (this.booking.till >= bookingData[i].from &&
-                                this.booking.till <= bookingData[i].till)
-                        ) {
-                            console.log("in between, please block");
+                .take(1)
+                .subscribe(bookingData => {
+                    console.log("found bookings for this parking area: ", bookingData);
+                    for (let i = 0; i < bookingData.length; i++) {
+                        if (bookingData[i].slot == this.booking.slot) {
+                            //same slot, check if time is in between
+                            console.log(i + ".same slot, check if time is in between");
+                            if (
+                                (this.booking.from >= bookingData[i].from &&
+                                    this.booking.from <= bookingData[i].till)
+                                ||
+                                (this.booking.till >= bookingData[i].from &&
+                                    this.booking.till <= bookingData[i].till)
+                            ) {
+                                console.log("in between, please block");
+                                alert("There is a Booking found in this time frame which is from: " + new Date(bookingData[i].from) + " - " + new Date(bookingData[i].till));
+                                return;
+                            }
+                        } else {
+                            console.log("slot not matched");
                         }
                     }
-                }
-                console.log("iteration ended, no booking found in matching time slot");
-                this.fs.pushData("bookings", this.booking)
-                    .then(done => {
-                        alert("Booking Success");
-                    });
-            });
+                    console.log("iteration ended, no booking found in matching time slot");
+                    this.fs.pushData("bookings", this.booking)
+                        .then(done => {
+                            alert("Booking Success");
+                        });
+                });
         }//else ended here
     }//function ended here
 }
