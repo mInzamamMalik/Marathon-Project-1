@@ -5,7 +5,9 @@ import { HttpModule } from '@angular/http';
 
 import { NgReduxModule } from 'ng2-redux';
 import { StoreModule } from './store'
+
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuardService } from './providers/auth-guard.service';
 
 import { AngularFireModule } from 'angularfire2';
 import { FireService } from './providers/fire.service'
@@ -39,16 +41,16 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'signup', component: SignupComponent },
 
-    { path: 'admin/dashboard', component: AdminDashboardComponent },
-    { path: 'admin/parking', component: ViewParkingAreaComponent },
-    { path: 'admin/feedback', component: ViewFeedbackComponent },
-    { path: 'admin/bookings', component: ViewAllBookingsComponent },
+    { path: 'admin/dashboard', component: AdminDashboardComponent, canActivate: [AuthGuardService] },
+    { path: 'admin/parking', component: ViewParkingAreaComponent, canActivate: [AuthGuardService] },
+    { path: 'admin/feedback', component: ViewFeedbackComponent, canActivate: [AuthGuardService] },
+    { path: 'admin/bookings', component: ViewAllBookingsComponent, canActivate: [AuthGuardService] },
 
-    { path: 'user/dashboard', component: UserDashboardComponent },
-    { path: 'user/feedback', component: FeedbackComponent },
-    { path: 'user/parking', component: ViewParkingSlotsComponent },
-    { path: 'user/bookslot', component: BookslotComponent },
-    { path: 'user/viewbookings', component: ViewbookingsComponent },
+    { path: 'user/dashboard', component: UserDashboardComponent, canActivate: [AuthGuardService] },
+    { path: 'user/feedback', component: FeedbackComponent, canActivate: [AuthGuardService] },
+    { path: 'user/parking', component: ViewParkingSlotsComponent, canActivate: [AuthGuardService] },
+    { path: 'user/bookslot', component: BookslotComponent, canActivate: [AuthGuardService] },
+    { path: 'user/viewbookings', component: ViewbookingsComponent, canActivate: [AuthGuardService] },
 
     // {
     //     path: 'heroes',
@@ -89,7 +91,7 @@ const appRoutes: Routes = [
         RouterModule.forRoot(appRoutes)
 
     ],
-    providers: [FireService],
+    providers: [FireService, AuthGuardService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
